@@ -99,4 +99,4 @@ static int get_param(const std::string& config_file,
 
 } // namespace echo
 
-#endif ECHO_APP_PARAM_HPP
+#endif //ECHO_APP_PARAM_HPP

@@ -130,7 +130,8 @@ public:
         continue;
       }
  
-      if (ec = sync_handler->connect())
+      ec = sync_handler->connect();
+      if (ec)
       {
         std::cout << "Connect error: " << ec.message() << "\n";
         error_count_.error();
@@ -155,7 +156,8 @@ public:
         continue;
       }
 */
-      if (ec = sync_handler->write_read(bytes_transferred))
+      ec = sync_handler->write_read(bytes_transferred);
+      if (ec)
       {
         std::cout << "Write and read error: " << ec.message() << "\n";
         error_count_.error();

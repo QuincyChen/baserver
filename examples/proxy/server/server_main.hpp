@@ -46,7 +46,7 @@ public:
   {
   }
 
-  ~server_main()
+  virtual ~server_main()
   {
     server_.reset();
   }
@@ -62,7 +62,7 @@ public:
   }
 
   /// Start the server with nonblock mode.
-  int start(DWORD argc, LPTSTR *argv)
+  int start(int argc, char **argv)
   {
     int ret = init();
 

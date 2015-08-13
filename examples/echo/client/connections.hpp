@@ -32,7 +32,7 @@ public:
 
   explicit connections(client_handler_pool_type* service_handler_pool,
       error_count& counter,
-      boost::asio::ip::tcp::endpoint& endpoint,
+      const boost::asio::ip::tcp::endpoint& endpoint,
       std::size_t io_pool_size,
       std::size_t work_pool_size,
       unsigned int pause_seconds,

@@ -52,7 +52,12 @@ public:
     return handler.read_buffer();
   }
   
-  void on_set_parent(client_handler_t& handler, server_handler_ptr& server_handler)
+  template<typename Per_connection_data>
+    void set_data(Per_connection_data& data) {
+    //FIXME: Just add for compiler error resolve, no idea for the action.
+  }
+
+  void on_set_parent(client_handler_t& handler, const server_handler_ptr& server_handler)
   {
     BOOST_ASSERT(server_handler.get() != 0);
     

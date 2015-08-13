@@ -42,8 +42,8 @@ public:
 
   /// Constructor.
   client(service_handler_pool_t* service_handler_pool,
-      endpoint_t& peer_endpoint = endpoint_t(),
-      endpoint_t& local_endpoint = endpoint_t())
+      const endpoint_t& peer_endpoint = endpoint_t(),
+      const endpoint_t& local_endpoint = endpoint_t())
     : service_handler_pool_(service_handler_pool),
       peer_endpoint_(peer_endpoint),
       local_endpoint_(local_endpoint)
@@ -68,7 +68,7 @@ public:
   bool connect(io_service_t& io_service,
       io_service_t& work_service,
       endpoint_t& peer_endpoint,
-      endpoint_t& local_endpoint = endpoint_t())
+      const endpoint_t& local_endpoint = endpoint_t())
   {
     // Get new handler for connect.
     service_handler_ptr new_handler = service_handler_pool_->get_service_handler(io_service,
@@ -89,7 +89,7 @@ public:
       io_service_t& work_service,
       Per_connection_data& data,
       endpoint_t& peer_endpoint,
-      endpoint_t& local_endpoint = endpoint_t())
+      const endpoint_t& local_endpoint = endpoint_t())
   {
    // Get new handler for connect.
     service_handler_ptr new_handler = service_handler_pool_->get_service_handler(io_service,
@@ -108,7 +108,7 @@ public:
   template<typename Parent_Handler>
   bool connect(Parent_Handler& parent_handler,
       endpoint_t& peer_endpoint,
-      endpoint_t& local_endpoint = endpoint_t())
+      const endpoint_t& local_endpoint = endpoint_t())
   {
     // Get new handler for connect.
     service_handler_ptr new_handler = service_handler_pool_->get_service_handler(parent_handler.io_service(),
@@ -132,7 +132,7 @@ public:
   bool connect(Parent_Handler& parent_handler,
       Per_connection_data& data,
       endpoint_t& peer_endpoint,
-      endpoint_t& local_endpoint = endpoint_t())
+      const endpoint_t& local_endpoint = endpoint_t())
   {
     // Get new handler for connect.
     service_handler_ptr new_handler = service_handler_pool_->get_service_handler(parent_handler.io_service(),

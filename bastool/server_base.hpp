@@ -22,18 +22,18 @@ public:
   {
   }
 
-  ~server_base()
+  virtual ~server_base()
   {
   }
 
   /// Executes when startup.
-  virtual int start(DWORD argc, LPTSTR *argv) = 0;
+  virtual int start(int argc, char **argv) = 0;
 
   /// Executes when continue.
   virtual void start(void) = 0;
 
   /// Executes when custom command.
-  virtual void do_command(DWORD controls) {}
+  virtual void do_command(int controls) {}
 
   /// Executes when stop.
   virtual void stop(void) = 0;

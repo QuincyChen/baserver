@@ -261,6 +261,18 @@ public:
                                     event));
   }
 
+  /// Set the parent handler in work_service thread.
+  template<typename Parent_Handler>
+  void set_parent(const Parent_Handler& handler)
+  {
+    // The handler is stopped, do nothing.
+    if (stopped_)
+      return;
+
+    // Call on_set_parent function of the work handler.
+    work_handler_->on_set_parent(*this, handler);
+  }
+
 private:
   template<typename, typename, typename> friend class service_handler_pool;
   template<typename, typename, typename> friend class server;
@@ -310,7 +322,7 @@ private:
 
   /// Start asynchronous connect, can be call from any thread.
   void connect(endpoint_t& peer_endpoint,
-               endpoint_t& local_endpoint = endpoint_t())
+               const endpoint_t& local_endpoint = endpoint_t())
   {
     io_service().dispatch(boost::bind(&service_handler_t::connect_i,
                                       shared_from_this(),
@@ -322,7 +334,7 @@ private:
   template<typename Per_connection_data>
   void connect(Per_connection_data& data,
                endpoint_t& peer_endpoint,
-               endpoint_t& local_endpoint = endpoint_t())
+               const endpoint_t& local_endpoint = endpoint_t())
   {
     // Set per_connection_data.
     work_handler_->set_data(data);
@@ -600,18 +612,6 @@ private:
 
     // Call on_write function of the work handler.
     work_handler_->on_write(*this, bytes_transferred);
-  }
-
-  /// Set the parent handler in work_service thread.
-  template<typename Parent_Handler>
-  void set_parent(Parent_Handler& handler)
-  {
-    // The handler is stopped, do nothing.
-    if (stopped_)
-      return;
-
-    // Call on_set_parent function of the work handler.
-    work_handler_->on_set_parent(*this, handler);
   }
 
   /// Set the child handler in work_service thread.

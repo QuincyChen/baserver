@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
     pthread_sigmask(SIG_BLOCK, &new_mask, &old_mask);
 
     // Run server in background thread.
-    boost::thread t(boost::bind(&server::run, &s));
+    boost::thread t(boost::bind(&server_main::run, &s));
 
     // Restore previous signals.
     pthread_sigmask(SIG_SETMASK, &old_mask, 0);

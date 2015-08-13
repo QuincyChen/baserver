@@ -50,7 +50,7 @@ public:
 
   /// Construct server object with internal io_service_group..
   server(service_handler_pool_t* service_handler_pool,
-      endpoint_t& local_endpoint,
+      const endpoint_t& local_endpoint,
       size_t io_pool_size = BAS_IO_SERVICE_POOL_INIT_SIZE,
       size_t work_pool_init_size = BAS_IO_SERVICE_POOL_INIT_SIZE,
       size_t work_pool_high_watermark = BAS_IO_SERVICE_POOL_HIGH_WATERMARK,
@@ -79,7 +79,7 @@ public:
 
   /// Construct server object with external io_service_group.
   server(service_handler_pool_t* service_handler_pool,
-      endpoint_t& local_endpoint,
+      const endpoint_t& local_endpoint,
       io_service_group_ptr& service_group,
       size_t accept_queue_length = BAS_ACCEPT_QUEUE_LENGTH)
     : service_handler_pool_(service_handler_pool),
@@ -156,7 +156,7 @@ public:
   {
     if (!started_                 || \
         service_group_.get() == 0 || \
-        !has_service_group_ && !service_group_->started())
+        (!has_service_group_ && !service_group_->started()))
       return;
 
     // Close the acceptor in the same thread.
@@ -182,7 +182,7 @@ private:
   {
     if (started_                  || \
         service_group_.get() == 0 || \
-        !has_service_group_ && !service_group_->started())
+        (!has_service_group_ && !service_group_->started()))
       return;
 
     // Open the acceptor with the option to reuse the address (i.e. SO_REUSEADDR).

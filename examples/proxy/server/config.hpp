@@ -15,4 +15,4 @@ namespace proxy {
 
 } // namespace proxy
 
-#endif PROXY_CONFIG_HPP
+#endif //PROXY_CONFIG_HPP

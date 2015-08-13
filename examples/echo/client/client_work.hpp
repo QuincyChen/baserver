@@ -34,6 +34,11 @@ public:
   {
   }
 
+  template<typename Per_connection_data>
+    void set_data(Per_connection_data& data) {
+    //FIXME: Just add for compiler error resolve, no idea for the action.
+  }
+
   void on_clear(client_handler_type& handler)
   {
   }

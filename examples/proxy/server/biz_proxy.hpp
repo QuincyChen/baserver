@@ -25,8 +25,8 @@ public:
   typedef boost::asio::ip::tcp::endpoint endpoint_t;
 
   /// Constructor.
-  bgs_proxy(endpoint_t& peer_endpoint,
-      endpoint_t& local_endpoint = endpoint_t())
+  bgs_proxy(const endpoint_t& peer_endpoint,
+      const endpoint_t& local_endpoint = endpoint_t())
     : peer_endpoint_(peer_endpoint),
       local_endpoint_(local_endpoint)
   {

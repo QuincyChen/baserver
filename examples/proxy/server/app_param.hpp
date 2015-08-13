@@ -111,4 +111,4 @@ static int get_param(const std::string& config_file,
 
 } // namespace proxy
 
-#endif PROXY_APP_PARAM_HPP
+#endif //PROXY_APP_PARAM_HPP

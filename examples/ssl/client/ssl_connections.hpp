@@ -31,7 +31,7 @@ public:
   typedef bas::client<ssl_client_work, ssl_client_work_allocator, ssl_socket> client_type;
 
   explicit ssl_connections(client_handler_pool_type* service_handler_pool,
-      boost::asio::ip::tcp::endpoint& endpoint,
+      const boost::asio::ip::tcp::endpoint& endpoint,
       std::size_t io_service_pool_size,
       std::size_t work_pool_init_size,
       std::size_t work_pool_high_watermark,

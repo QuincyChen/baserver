@@ -15,4 +15,4 @@ namespace echo {
 
 } // namespace echo
 
-#endif ECHO_CONFIG_HPP
+#endif //ECHO_CONFIG_HPP

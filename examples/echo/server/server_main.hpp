@@ -71,7 +71,7 @@ public:
   }
 
   /// Start the server with nonblock mode.
-  int start(DWORD argc, LPTSTR *argv)
+  int start(int argc, char **argv)
   {
     int ret = init();
 

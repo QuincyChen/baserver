@@ -62,8 +62,8 @@ public:
   }
 
   /// Set endpoint_pair.
-  endpoint_group& set(endpoint_t& peer_endpoint,
-                      endpoint_t& local_endpoint = endpoint_t())
+  endpoint_group& set(const endpoint_t& peer_endpoint,
+                      const endpoint_t& local_endpoint = endpoint_t())
   {
     // Lock for synchronize access to data.
     scoped_lock_t lock(mutex_);
@@ -310,7 +310,7 @@ private:
     boost::system::error_code ec = handler_ptr->error_code();
     // If the pool has exceed high_water_mark or been closed, delete this handler.
     if (closed_                                   || \
-        ec && ec != boost::asio::error::shut_down || \
+        (ec && ec != boost::asio::error::shut_down) || \
         sync_handlers_.size() >= pool_high_watermark_)
     {
       handler_ptr->clear();
@@ -431,7 +431,6 @@ public:
                                      endpoint_pairs,
                                      buffer_size,
                                      timeout_milliseconds,
-                                     io_pool_size,
                                      pool_init_size,
                                      pool_low_watermark,
                                      pool_high_watermark,

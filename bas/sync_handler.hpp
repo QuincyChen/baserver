@@ -150,7 +150,7 @@ public:
 
   /// Establish a connection with the given endpoint.
   error_t connect(endpoint_t& peer_endpoint,
-              endpoint_t& local_endpoint = endpoint_t(),
+              const endpoint_t& local_endpoint = endpoint_t(),
               bool reconnect = false)
   {
     // Lock for synchronize access to data.
@@ -282,7 +282,7 @@ public:
   }
 
   /// Write the default buffer.
-  void write(size_t length, size_t& bytes_transferred)
+  error_t write(size_t length, size_t& bytes_transferred)
   {
     bytes_transferred = 0;
 

@@ -23,7 +23,7 @@
 
 namespace bas {
 
-/// Struct for deliver event cross multiple hander.
+/// Struct for deliver event cross multiple handler.
 struct event_t
 {
   /// Define type reference of std::size_t.
@@ -675,7 +675,7 @@ private:
   /// Timer for session timeout.
   timer_ptr session_timer_;
 
-  /// The expiry seconds of session.
+  /// The expire seconds of session.
   unsigned int session_timeout_;
 
   /// Timer for i/o operation timeout.

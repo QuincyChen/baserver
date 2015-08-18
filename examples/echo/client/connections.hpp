@@ -82,12 +82,12 @@ public:
       if (error_count_.get_timeout() != 0)
       {
         std::cout << "Total " << error_count_.get_timeout() << " connections timeout. ";
-        std::cout << "everage " << error_count_.get_timeout()/(i+1) << " timeout.\n";
+        std::cout << "average " << error_count_.get_timeout()/(i+1) << " timeout.\n";
       }
       if (error_count_.get_error() != 0)
       {
         std::cout << "Total " << error_count_.get_error() << " connections failed. ";
-        std::cout << "everage " << error_count_.get_error()/(i+1) << " failed.\n";
+        std::cout << "average " << error_count_.get_error()/(i+1) << " failed.\n";
       }
 
       if (i < test_times_ - 1)
